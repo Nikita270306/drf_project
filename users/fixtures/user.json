@@ -1,0 +1,28 @@
+[
+    {
+        "model": "users.user",
+        "pk": 1,
+        "fields": {
+            "email": "user1@example.com",
+            "phone": "+123456789",
+            "country": "Country1",
+            "is_password_reset": false,
+            "verification_code": "123456",
+            "is_active": true,
+            "is_staff": false
+        }
+    },
+    {
+        "model": "users.user",
+        "pk": 2,
+        "fields": {
+            "email": "user2@example.com",
+            "phone": "+987654321",
+            "country": "Country2",
+            "is_password_reset": true,
+            "verification_code": "654321",
+            "is_active": true,
+            "is_staff": false
+        }
+    }
+]

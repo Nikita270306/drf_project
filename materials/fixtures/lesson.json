@@ -1,0 +1,35 @@
+[
+    {
+        "model": "materials.lesson",
+        "pk": 1,
+        "fields": {
+            "title": "Урок 1",
+            "description": "Описание урока 1",
+            "preview": "lesson_previews/lesson1.png",
+            "video_link": "https://www.youtube.com/watch?v=video1",
+            "course": 1
+        }
+    },
+    {
+        "model": "materials.lesson",
+        "pk": 2,
+        "fields": {
+            "title": "Урок 2",
+            "description": "Описание урока 2",
+            "preview": "lesson_previews/lesson2.png",
+            "video_link": "https://www.youtube.com/watch?v=video2",
+            "course": 1
+        }
+    },
+    {
+        "model": "materials.lesson",
+        "pk": 3,
+        "fields": {
+            "title": "Урок 1",
+            "description": "Описание урока 1",
+            "preview": "lesson_previews/lesson1.png",
+            "video_link": "https://www.youtube.com/watch?v=video3",
+            "course": 2
+        }
+    }
+]

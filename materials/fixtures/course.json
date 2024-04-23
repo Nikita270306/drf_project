@@ -1,0 +1,20 @@
+[
+    {
+        "model": "materials.course",
+        "pk": 1,
+        "fields": {
+            "title": "Курс по Django",
+            "preview": "previews/django.png",
+            "description": "Описание курса по Django"
+        }
+    },
+    {
+        "model": "materials.course",
+        "pk": 2,
+        "fields": {
+            "title": "Курс по React",
+            "preview": "previews/react.png",
+            "description": "Описание курса по React"
+        }
+    }
+]
