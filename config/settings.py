@@ -40,7 +40,8 @@ INSTALLED_APPS = [
 
     'rest_framework',
     'users',
-    'materials'
+    'materials',
+    'django_filters',
 ]
 
 MIDDLEWARE = [
