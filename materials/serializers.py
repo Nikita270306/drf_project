@@ -53,7 +53,6 @@ class PaymentsForOwnerSerializer(serializers.ModelSerializer):
         fields = ['id', 'amount', 'payment_date', 'payment_method']
 
 
-
 class CourseSerializers(serializers.ModelSerializer):
     all_lessons = LessonSerializer(many=True, read_only=True, source='lesson_set')
     number_of_lesson = serializers.SerializerMethodField()

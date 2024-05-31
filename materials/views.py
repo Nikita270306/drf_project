@@ -23,6 +23,11 @@ class CourseCreateAPIView(generics.CreateAPIView):
         new_course.save()
 
 
+class CourseRetrieveAPIView(generics.RetrieveAPIView):
+    serializer_class = CourseSerializer
+    queryset = Course.objects.all()
+
+
 class LessonCreateAPIView(generics.CreateAPIView):
     serializer_class = LessonSerializer
 

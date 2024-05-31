@@ -3,6 +3,7 @@ import re
 from rest_framework import serializers
 from rest_framework.serializers import ValidationError
 
+
 class TitleValodator:
     def __init__(self, field):
         self.field = field
