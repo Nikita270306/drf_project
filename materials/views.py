@@ -3,6 +3,7 @@ from rest_framework import viewsets, generics
 from rest_framework.filters import OrderingFilter
 
 from materials.models import Course, Lesson
+from materials.paginators import MaterialsPagination
 from materials.serializers import CourseSerializer, LessonSerializer, PaymentSerializer
 from users.models import Payment
 
@@ -10,6 +11,7 @@ from users.models import Payment
 class CourseViewSet(viewsets.ModelViewSet):
     serializer_class = CourseSerializer
     queryset = Course.objects.all()
+    pagination_class = MaterialsPagination
 
 
 class CourseCreateAPIView(generics.CreateAPIView):
@@ -28,6 +30,7 @@ class LessonCreateAPIView(generics.CreateAPIView):
 class LessonListAPIView(generics.ListAPIView):
     serializer_class = LessonSerializer
     queryset = Lesson.objects.all()
+    pagination_class = MaterialsPagination
 
 
 class LessonRetrieveAPIView(generics.RetrieveAPIView):
@@ -38,6 +41,7 @@ class LessonRetrieveAPIView(generics.RetrieveAPIView):
 class LessonUpdateAPIView(generics.UpdateAPIView):
     serializer_class = LessonSerializer
     queryset = Lesson.objects.all()
+    pagination_class = MaterialsPagination
 
 
 class LessonDestroyAPIView(generics.DestroyAPIView):

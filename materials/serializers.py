@@ -1,8 +1,9 @@
 from rest_framework import serializers
 from rest_framework.relations import SlugRelatedField
 
-from users.models import User, Payment
+from users.models import User, Payment, Subscription
 from .models import Course, Lesson
+from .validators import TitleValodator, YouTubeLinkValidator
 
 
 class CourseSerializer(serializers.ModelSerializer):
@@ -22,6 +23,12 @@ class LessonSerializer(serializers.ModelSerializer):
     class Meta:
         model = Lesson
         fields = '__all__'
+
+    validators = [
+        TitleValodator(field='title'),
+        serializers.UniqueTogetherValidator(fields=['title', 'description'], queryset=Lesson.objects.all()),
+        YouTubeLinkValidator(field='video_link')
+    ]
 
 
 class LessonListSerializer(serializers.ModelSerializer):
@@ -50,7 +57,11 @@ class PaymentsForOwnerSerializer(serializers.ModelSerializer):
 class CourseSerializers(serializers.ModelSerializer):
     all_lessons = LessonSerializer(many=True, read_only=True, source='lesson_set')
     number_of_lesson = serializers.SerializerMethodField()
-    sub_status = serializers.SerializerMethodField()
+    is_subscribed = serializers.SerializerMethodField()
+
+    def get_is_subscribed(self, object):
+        user = self.context['request'].user
+        return Subscription.objects.filter(user=user, course=object).exists()
 
     def get_number_of_lesson(self, course):
         lesson = Lesson.objects.filter(course=course)

@@ -41,3 +41,11 @@ class Payment(models.Model):
 
     def __str__(self):
         return f"Payment: {self.user}, {self.payment_date}, {self.amount}"
+
+
+class Subscription(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    course = models.ForeignKey(Course, on_delete=models.CASCADE)
+
+    class Meta:
+        unique_together = ['user', 'course']
