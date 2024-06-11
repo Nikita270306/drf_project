@@ -46,6 +46,9 @@ INSTALLED_APPS = [
     'users',
     'materials',
     'django_filters',
+    'drf_yasg',
+    'corsheaders',
+
 ]
 
 MIDDLEWARE = [
@@ -56,7 +59,18 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:8000',
+    "https://read-and-write.example.com",
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://read-and-write.example.com",
+]
+CORS_ALLOW_ALL_ORIGINS = False
+
 
 ROOT_URLCONF = 'config.urls'
 
@@ -147,3 +161,5 @@ REST_FRAMEWORK = {
     ]
 }
 
+CUR_API_URL = 'https://api.currencyapi.com/'
+CUR_API_KEY = 'cur_live_lwoMco3pQM3daqyI4W4NIDy23HviMq5ksu60abuo'
