@@ -5,6 +5,7 @@ from rest_framework import viewsets, generics
 from rest_framework.decorators import permission_classes
 from rest_framework.filters import OrderingFilter
 from rest_framework.permissions import IsAuthenticated
+from materials.tasks import send_course_update_email
 
 from materials.models import Course, Lesson
 from materials.paginators import MaterialsPagination
@@ -36,6 +37,12 @@ class CourseCreateAPIView(generics.CreateAPIView):
 class CourseRetrieveAPIView(generics.RetrieveAPIView):
     serializer_class = CourseSerializer
     queryset = Course.objects.all()
+
+    def update_course(request, course_id):
+        course = Course.objects.get(pk=course_id)
+        subscribers = course.subscribers.all()
+        for subscriber in subscribers:
+            send_course_update_email.delay(subscriber.email)
 
 
 class LessonCreateAPIView(generics.CreateAPIView):
